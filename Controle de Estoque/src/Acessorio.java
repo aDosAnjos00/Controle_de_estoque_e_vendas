@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Acessorio extends Peca {
 
-    private static Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     public Acessorio(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo) {
         super(descricao, quantidade, estoqueMinimo, estoqueMaximo);
@@ -11,20 +11,20 @@ public class Acessorio extends Peca {
     @Override
     public void venda() {
         try {
-            System.out.println("Quantidade vendida de " + descricao + ": ");
+            System.out.print("Quantidade vendida de " + descricao + ": ");
             int qtd = Integer.parseInt(sc.nextLine());
-
-            if (qtd < 0) {
-                System.out.println("Quamtidade Invalida!!");
-                return;
-            } else if (qtd > quantidade) {
-                System.out.println("Estoque insuficiente!");
+            if (qtd <= 0) {
+                System.out.println("Quantidade deve ser positiva!");
                 return;
             }
-
+            if (qtd > quantidade) {
+                System.out.println("Estoque insuficiente! Disponível: " + quantidade);
+                return;
+            }
             quantidade -= qtd;
-        } catch (Exception e) {
-            System.out.println("Erro: Entrada Invalida!");
+            System.out.println("Venda realizada: " + qtd + " unidades.");
+        } catch (NumberFormatException e) {
+            System.out.println("Erro: entrada deve ser um número inteiro!");
         }
     }
 }

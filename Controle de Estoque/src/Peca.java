@@ -38,4 +38,10 @@ abstract public class Peca implements Item {
     @Override
     public void venda() {
     }
+
+    @Override
+    public String toString() {
+        return descricao + " - Quantidade: " + quantidade;
+    }
+
 }

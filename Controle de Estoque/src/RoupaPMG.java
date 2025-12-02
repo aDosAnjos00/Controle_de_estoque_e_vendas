@@ -8,7 +8,7 @@ public class RoupaPMG implements Item {
     Integer estoqueMinimo;
     Integer estoqueMaximo;
 
-    private static Scanner sc = new Scanner(System.in);
+    private Scanner sc = new Scanner(System.in);
 
     public RoupaPMG(String descricao, Integer p, Integer m, Integer g, Integer estoqueMinimo, Integer estoqueMaximo) {
         this.descricao = descricao;
@@ -27,8 +27,12 @@ public class RoupaPMG implements Item {
 
     @Override
     public void venda() {
-     System.out.println("Tamanho (P/M/G): ");
-     String tam = sc.nextLine().toUpperCase();
+        System.out.print("Tamanho (P/M/G): ");
+        String tam = sc.nextLine().trim().toUpperCase();
+        if (!tam.matches("[PMG]")) {
+            System.out.println("Tamanho inválido! Use P, M ou G.");
+            return;
+        }
 
      switch (tam) {
          case "P":
