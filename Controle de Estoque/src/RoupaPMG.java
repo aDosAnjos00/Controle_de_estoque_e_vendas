@@ -64,13 +64,7 @@ public class RoupaPMG implements Item {
 
     @Override
     public String toString() {
-        return "RoupaPMG{" +
-                "descricao='" + descricao + '\'' +
-                ", quantidadeP=" + quantidadeP +
-                ", quantidadeM=" + quantidadeM +
-                ", quantidadeG=" + quantidadeG +
-                ", estoqueMinimo=" + estoqueMinimo +
-                ", estoqueMaximo=" + estoqueMaximo +
-                '}';
+        return descricao + " - P: " + quantidadeP + " | M: " + quantidadeM + " | G: " + quantidadeG +
+                " (Mín: " + estoqueMinimo + ", Máx: " + estoqueMaximo + ")";
     }
 }
