@@ -1,11 +1,13 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Acessorio extends Peca {
 
-    private Scanner sc = new Scanner(System.in);
+    private Scanner sc;
 
-    public Acessorio(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo) {
-        super(descricao, quantidade, estoqueMinimo, estoqueMaximo);
+    public Acessorio(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo, Scanner sc) {
+        super(descricao, quantidade, estoqueMinimo, estoqueMaximo, sc);
+        this.sc = sc;
     }
 
     @Override
@@ -13,18 +15,17 @@ public class Acessorio extends Peca {
         try {
             System.out.print("Quantidade vendida de " + descricao + ": ");
             int qtd = Integer.parseInt(sc.nextLine());
-            if (qtd <= 0) {
-                System.out.println("Quantidade deve ser positiva!");
-                return;
+            if (qtd > 0 && qtd <= this.getQuantidade()) {
+
+                this.setQuantidade(this.getQuantidade() - qtd);
+
+                System.out.println("Venda de " + qtd + " unidades realizada!");
+            } else {
+                System.out.println("Quantidade insuficiente ou entrada errada!");
             }
-            if (qtd > quantidade) {
-                System.out.println("Estoque insuficiente! Disponível: " + quantidade);
-                return;
-            }
-            quantidade -= qtd;
-            System.out.println("Venda realizada: " + qtd + " unidades.");
-        } catch (NumberFormatException e) {
+        } catch (InputMismatchException var2) {
             System.out.println("Erro: entrada deve ser um número inteiro!");
+            sc.nextLine();
         }
     }
 }

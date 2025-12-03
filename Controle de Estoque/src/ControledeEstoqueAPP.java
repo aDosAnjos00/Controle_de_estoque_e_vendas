@@ -6,27 +6,24 @@ public static void main(String[] args) {
 
     Item[] itens = new Item[5];
 
-    itens[0] = new Acessorio("Relogio", 10, 2, 10);
-    itens[1] = new RoupaTamUni("Saída de Praia", 5, 1, 5);
-    itens[2] = new RoupaPMG("Camisa", 3, 2, 1, 3, 10);
-    itens[3] = new Acessorio("Cinto", 8, 2, 10);
-    itens[4] = new RoupaPMG("Vestido", 2, 2, 2, 3, 8);
+    itens[0] = new Acessorio("Relogio", 10, 2, 10, sc);
+    itens[1] = new RoupaTamUni("Sobretudo", 5, 1, 5, sc);
+    itens[2] = new RoupaPMG("Camisa", 3, 2, 1, 3, 10, sc);
+    itens[3] = new Acessorio("Cinto", 8, 2, 10, sc);
+    itens[4] = new RoupaPMG("Calça", 2, 2, 2, 3, 8, sc);
 
     int opcao = 0;
 
     while (opcao != 5) {
-        System.out.println("\n=== MENU ===");
+        System.out.println("\n=== ESTOQUE ===");
 
         for (int i = 0; i < itens.length; i++) {
             String desc;
-            if (itens[i] instanceof Peca) {
-                desc = ((Peca) itens[i]).getDescricao();
-            } else if (itens[i] instanceof RoupaPMG) {
-                desc = ((RoupaPMG) itens[i]).getDescricao();
+            if (itens[i] != null) {
+                desc = itens[i].getDescricao();  // Polimorfismo direto
             } else {
-                desc = "Item";
+                desc = "Item indisponível";
             }
-
             System.out.println(i + " - " + desc);
         }
 

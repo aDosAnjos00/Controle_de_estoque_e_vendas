@@ -1,7 +1,9 @@
+import java.util.Scanner;
+
 public class RoupaTamUni extends Peca {
 
-    public RoupaTamUni(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo) {
-        super(descricao, quantidade, estoqueMinimo, estoqueMaximo);
+    public RoupaTamUni(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo, Scanner scanner) {
+        super(descricao, quantidade, estoqueMinimo, estoqueMaximo, scanner);
     }
 
     @Override

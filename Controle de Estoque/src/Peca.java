@@ -1,14 +1,19 @@
+import java.util.Scanner;
+
 abstract public class Peca implements Item {
     String descricao;
     Integer quantidade;
     Integer estoqueMinimo;
     Integer estoqueMaximo;
 
-    public Peca(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo) {
+    private Scanner sc;
+
+    public Peca(String descricao, Integer quantidade, Integer estoqueMinimo, Integer estoqueMaximo, Scanner scanner) {
         this.descricao = descricao;
         this.quantidade = quantidade;
         this.estoqueMinimo = estoqueMinimo;
         this.estoqueMaximo = estoqueMaximo;
+        this.sc = scanner;
     }
 
     public String getDescricao() {
@@ -25,6 +30,18 @@ abstract public class Peca implements Item {
 
     public Integer getEstoqueMaximo() {
         return estoqueMaximo;
+    }
+
+    public void setQuantidade(Integer quantidade) {
+        this.quantidade = quantidade;
+    }
+
+    public void setEstoqueMinimo(Integer estoqueMinimo) {
+        this.estoqueMinimo = estoqueMinimo;
+    }
+
+    public void setEstoqueMaximo(Integer estoqueMaximo) {
+        this.estoqueMaximo = estoqueMaximo;
     }
 
     @Override
